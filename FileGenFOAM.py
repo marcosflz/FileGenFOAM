@@ -4,11 +4,7 @@ from tkinter import  ttk
 import tkinter as tk
 import configparser
 import sourceFOAM
-import os
 
-
-folder0_path = '0/'
-os.makedirs(folder0_path, exist_ok=True)
 
 
 def get_bound_names(file_path):
@@ -31,10 +27,10 @@ def get_bound_names(file_path):
     return boundary_names
 
 
-def gen_files(var,varDim,boundaries,sourceFunc):
+def gen_files(var,varDim,varTyp,boundaries,sourceFunc):
     if var not in varDim:
         raise ValueError(f"La variable '{var}' no está definida en varDim")
-    content = sourceFunc(var, varDim, boundaries)
+    content = sourceFunc(var, varDim, varTyp, boundaries)
     return content
 
 
@@ -68,7 +64,7 @@ def importFile():
                 textBox.delete('1.0', tk.END)
                 textBox.insert(tk.END, "".join(new_elements))
     boundaries = get_bound_names(file_path)
-    folder0_files = write0Files(varDim, boundaries, sourceFOAM.folder0)
+    folder0_files = write0Files(varDim, varTyp, boundaries, sourceFOAM.folder0)
     return inner()
 
 def exportFile():
@@ -77,7 +73,7 @@ def exportFile():
     for line in lines:
         if 'object' in line:
             export_name = str(line.split()[-1].strip(";"))
-            with open(folder0_path + export_name, 'w') as file:
+            with open(export_name, 'w') as file:
                 file.write(content)
 
 def update_button_text():
@@ -85,10 +81,10 @@ def update_button_text():
     writeButton.config(text='Write ' + selected_folders) 
 
 class write0Files:
-    def __init__(self, varDim, boundary, sourceFunc):
+    def __init__(self, varDim, varTyp,boundary, sourceFunc):
         self.variables = varDim.keys()
         for var in self.variables:
-            setattr(self, var, gen_files(var, varDim, boundary, sourceFunc))
+            setattr(self, var, gen_files(var, varDim, varTyp, boundary, sourceFunc))
 
 
 folder0_files = None
@@ -97,8 +93,10 @@ config = configparser.ConfigParser()
 config.optionxform = preserve_case
 config.read('config.ini')
 
-folder0_section = config['folder_0']
-varDim = {key: value for key, value in folder0_section.items()}
+folder0_dim = config['folder_0_Dim']
+folder0_typ = config['folder_0_Type']
+varDim = {key: value for key, value in folder0_dim.items()}
+varTyp = {key: value for key, value in folder0_typ.items()}
 
 
 window = tk.Tk()

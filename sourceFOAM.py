@@ -1,4 +1,14 @@
-def folder0(var,varDim,boundaries):
+def folder0(var,varDim,varTyp,boundaries):
+
+    type = varTyp[var]
+    dim = varDim[var]
+
+    if type == 'volVectorField':
+        value = '(0 0 0)'
+
+    elif type == 'volScalarField':
+        value = '0'
+
     content = f"""/*--------------------------------*- C++ -*----------------------------------*\\
   =========                 |
   \\\\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
@@ -9,14 +19,14 @@ def folder0(var,varDim,boundaries):
 FoamFile
 {{
     format      ascii;
-    class       volVectorField;
+    class       {type};
     object      {var};
 }}
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      {varDim[var]}
+dimensions      {dim};
 
-internalField   uniform (0 0 0);
+internalField   uniform {value};
 
 boundaryField
 {{

@@ -20,49 +20,49 @@ internalField   uniform (0 0 0);
 boundaryField
 {
 
-    outer-part-sys_solid1
+    outerwall-part-sys_solid
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outer-part-sys_solid11
+    outerwall-part-sys_solid1
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outer-part-sys_solid111
+    outerwall-part-sys_solid11
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outer-part-sys_solid
+    outerwall-part-sys_solid111
     {
         type           /* type */;
         value          /* value */;
     }
 
-    inner-part-sys_solid1
+    innerwall-part-sys_solid
     {
         type           /* type */;
         value          /* value */;
     }
 
-    inner-part-sys_solid11
+    innerwall-part-sys_solid1
     {
         type           /* type */;
         value          /* value */;
     }
 
-    inner-part-sys_solid111
+    innerwall-part-sys_solid11
     {
         type           /* type */;
         value          /* value */;
     }
 
-    inner-part-sys_solid
+    innerwall-part-sys_solid111
     {
         type           /* type */;
         value          /* value */;

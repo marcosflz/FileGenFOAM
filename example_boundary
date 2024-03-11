@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-8
+9
 (
     outer-part-sys_solid1
     {
@@ -66,6 +66,13 @@ FoamFile
         startFace       56484;
     }
     inner-part-sys_solid
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          270;
+        startFace       56708;
+    }
+    javiere--calcetinsudao
     {
         type            wall;
         inGroups        List<word> 1(wall);
