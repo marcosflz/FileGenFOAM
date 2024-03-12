@@ -8,61 +8,67 @@
 FoamFile
 {
     format      ascii;
-    class       volVectorField;
-    object      nut;
+    class       volScalarField;
+    object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform 0;
 
 boundaryField
 {
 
-    outerwall-part-sys_solid
+    outer-part-sys_solid1
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outerwall-part-sys_solid1
+    outer-part-sys_solid11
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outerwall-part-sys_solid11
+    outer-part-sys_solid111
     {
         type           /* type */;
         value          /* value */;
     }
 
-    outerwall-part-sys_solid111
+    outer-part-sys_solid
     {
         type           /* type */;
         value          /* value */;
     }
 
-    innerwall-part-sys_solid
+    inner-part-sys_solid1
     {
         type           /* type */;
         value          /* value */;
     }
 
-    innerwall-part-sys_solid1
+    inner-part-sys_solid11
     {
         type           /* type */;
         value          /* value */;
     }
 
-    innerwall-part-sys_solid11
+    inner-part-sys_solid111
     {
         type           /* type */;
         value          /* value */;
     }
 
-    innerwall-part-sys_solid111
+    inner-part-sys_solid
+    {
+        type           /* type */;
+        value          /* value */;
+    }
+
+    javiere--calcetinsudao
     {
         type           /* type */;
         value          /* value */;

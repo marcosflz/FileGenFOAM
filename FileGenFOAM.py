@@ -4,8 +4,11 @@ from tkinter import  ttk
 import tkinter as tk
 import configparser
 import sourceFOAM
+import os
 
-
+folder_path = '0/'
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
 
 def get_bound_names(file_path):
     boundary_names = []
@@ -73,7 +76,7 @@ def exportFile():
     for line in lines:
         if 'object' in line:
             export_name = str(line.split()[-1].strip(";"))
-            with open(export_name, 'w') as file:
+            with open(folder_path + export_name, 'w') as file:
                 file.write(content)
 
 def update_button_text():

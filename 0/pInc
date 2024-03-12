@@ -8,14 +8,14 @@
 FoamFile
 {
     format      ascii;
-    class       volVectorField;
-    object      nuTilda;
+    class       volScalarField;
+    object      pInc;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform 0;
 
 boundaryField
 {
@@ -63,6 +63,12 @@ boundaryField
     }
 
     inner-part-sys_solid
+    {
+        type           /* type */;
+        value          /* value */;
+    }
+
+    javiere--calcetinsudao
     {
         type           /* type */;
         value          /* value */;
