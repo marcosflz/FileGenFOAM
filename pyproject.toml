@@ -1,0 +1,26 @@
+[project]
+name = "filegenfoam-studio"
+version = "0.1.0"
+description = "A guided desktop CFD workbench for OpenFOAM and BlueCFD-Core"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0",
+    "pywebview>=5.0",
+    "numpy>=1.26",
+    "gmsh>=4.13",
+    "pyvista>=0.44",
+    "vtk>=9.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "requests>=2.31"]
+
+[project.scripts]
+filegenfoam = "foamstudio.__main__:main"
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

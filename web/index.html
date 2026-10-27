@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>FileGenFOAM Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1119'/%3E%3Cpath d='M16 5c1.3 5 6 6.8 6 12a6 6 0 1 1-12 0c0-3.2 2-5.2 3.6-7 .2 2.6 1.1 3.9 2.5 4.8-.9-4.2.1-7.3-.1-9.8Z' fill='none' stroke='%234cc9f0' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2.8 21 7.4v9.2L12 21.2 3 16.6V7.4L12 2.8Z"/><path d="M3.4 7.6 12 12l8.6-4.4M12 12v9"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M5 21V14M5 10V3M12 21v-9M12 8V3M19 21v-5M19 12V3"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="19" cy="14" r="2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="m7 15 3.5-4 3 2.5L20 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7.5h6l2 2h10v9.5H3V7.5Z"/><path d="M3 7.5V5h6l2 2.5"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.9 1.9-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2.7v-.09A1.7 1.7 0 0 0 11.2 18.4a1.7 1.7 0 0 0-1.88.34l-.06.06-1.9-1.9.06-.06A1.7 1.7 0 0 0 7.76 15 1.7 1.7 0 0 0 6.2 14H6v-2.7h.2a1.7 1.7 0 0 0 1.56-1.03 1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.9-1.9.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 12.23 5.3V5h2.7v.3a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.9 1.9-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.96 11.3H21v2.7h-.04A1.7 1.7 0 0 0 19.4 15Z"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/><path d="M9 9h6v6H9z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.4-2h7.2L17 8h3v11H4V8Z"/><circle cx="12" cy="13.5" r="3.2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 6.5"/></symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5M12 17.2v.2"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 32 32"><path d="M16 2.5c1.4 5.5 6.7 7.4 6.7 13.2A6.7 6.7 0 0 1 16 22.4a6.7 6.7 0 0 1-6.7-6.7c0-3.5 2.1-5.7 4-7.6.2 2.8 1.2 4.2 2.7 5.2-1-4.6.1-8 0-10.8Z"/><path d="M7 24.5c2.4 2.7 5.4 4.2 9 4.2s6.6-1.5 9-4.2"/></symbol>
+  </svg>
+
+  <div id="boot" class="boot">
+    <div class="boot-mark"><svg class="icon"><use href="#i-logo"/></svg></div>
+    <div class="boot-title">FileGenFOAM <span>Studio</span></div>
+    <div class="boot-bar"><i></i></div>
+    <div class="boot-sub">Preparando el banco de trabajo CFD…</div>
+  </div>
+
+  <div id="app" class="app is-hidden">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><svg class="icon"><use href="#i-logo"/></svg></div>
+        <div class="brand-text">
+          <strong>FileGenFOAM</strong><span>Studio</span>
+        </div>
+        <span class="version-chip">v0.1 MVP</span>
+      </div>
+      <div class="project-chip" id="project-chip">
+        <span class="project-dot"></span>
+        <div class="project-copy">
+          <span id="project-name">Sin proyecto</span>
+          <small id="project-sub">—</small>
+        </div>
+        <span class="saved-indicator" id="saved-indicator">guardado</span>
+      </div>
+      <div class="top-actions">
+        <button class="btn btn-ghost" id="btn-new"><svg class="icon"><use href="#i-plus"/></svg><span>Nuevo</span></button>
+        <button class="btn btn-ghost" id="btn-open-folder"><svg class="icon"><use href="#i-folder"/></svg><span>Caso</span></button>
+        <button class="btn btn-ghost" id="btn-settings"><svg class="icon"><use href="#i-settings"/></svg><span>Ajustes</span></button>
+        <button class="runtime-pill" id="runtime-pill">
+          <i class="dot"></i><span id="runtime-pill-text">Detectando…</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <nav class="workflow">
+        <div class="workflow-head">
+          <span>Flujo de trabajo</span>
+          <small id="workflow-progress">0 / 5</small>
+        </div>
+        <ol class="steps" id="steps">
+          <li class="step" data-step="geometry">
+            <span class="step-index"><svg class="icon"><use href="#i-cube"/></svg></span>
+            <span class="step-copy"><strong>Geometría</strong><small>Dominio y patches</small></span>
+            <span class="step-check"><svg class="icon"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="step" data-step="mesh">
+            <span class="step-index"><svg class="icon"><use href="#i-grid"/></svg></span>
+            <span class="step-copy"><strong>Mallado</strong><small id="step-mesh-sub">blockMesh / gmsh</small></span>
+            <span class="step-check"><svg class="icon"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="step" data-step="physics">
+            <span class="step-index"><svg class="icon"><use href="#i-sliders"/></svg></span>
+            <span class="step-copy"><strong>Física</strong><small>Fluido y condiciones</small></span>
+            <span class="step-check"><svg class="icon"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="step" data-step="run">
+            <span class="step-index"><svg class="icon"><use href="#i-play"/></svg></span>
+            <span class="step-copy"><strong>Simulación</strong><small>Solver y residuales</small></span>
+            <span class="step-check"><svg class="icon"><use href="#i-check"/></svg></span>
+          </li>
+          <li class="step" data-step="results">
+            <span class="step-index"><svg class="icon"><use href="#i-chart"/></svg></span>
+            <span class="step-copy"><strong>Resultados</strong><small>Contornos y cortes</small></span>
+            <span class="step-check"><svg class="icon"><use href="#i-check"/></svg></span>
+          </li>
+        </ol>
+        <div class="workflow-foot">
+          <div class="runtime-card" id="runtime-card">
+            <div class="runtime-card-head">
+              <span class="status-dot" id="runtime-dot"></span>
+              <div><strong id="runtime-label">Sin motor</strong><small id="runtime-detail">Buscando OpenFOAM…</small></div>
+            </div>
+            <div class="runtime-card-meta"><span id="runtime-version">—</span><button id="btn-rescan" title="Volver a detectar"><svg class="icon"><use href="#i-refresh"/></svg></button></div>
+          </div>
+          <button class="btn btn-primary btn-run-side" id="quick-run">
+            <svg class="icon"><use href="#i-play"/></svg><span>Ejecutar simulación</span>
+          </button>
+          <p class="workflow-hint">Los cálculos se ejecutan con OpenFOAM. BlueCFD-Core es el motor recomendado en Windows.</p>
+        </div>
+      </nav>
+
+      <section class="stage">
+        <div class="viewport" id="viewport">
+          <canvas id="viewer-canvas"></canvas>
+          <div class="viewer-labels" id="viewer-labels"></div>
+          <div class="viewport-top">
+            <div class="hud">
+              <span class="hud-kicker" id="hud-kicker">GEOMETRÍA</span>
+              <h1 id="hud-title">Cavidad con tapa móvil</h1>
+              <p id="hud-sub">1.00 × 1.00 × 0.10 m · 3 patches</p>
+            </div>
+            <div class="hud-badges" id="hud-badges"></div>
+          </div>
+          <div class="view-toolbar" id="view-toolbar">
+            <button data-view="iso" title="Vista isométrica">Iso</button>
+            <button data-view="front" title="Vista frontal">Front</button>
+            <button data-view="top" title="Vista superior">Top</button>
+            <button data-view="right" title="Vista lateral">Right</button>
+            <span class="toolbar-sep"></span>
+            <button id="toggle-mesh" title="Mostrar malla"><svg class="icon"><use href="#i-grid"/></svg></button>
+            <button id="toggle-wire" title="Aristas del dominio"><svg class="icon"><use href="#i-layers"/></svg></button>
+            <button id="btn-fit" title="Ajustar vista"><svg class="icon"><use href="#i-fit"/></svg></button>
+            <button id="btn-shot" title="Capturar imagen"><svg class="icon"><use href="#i-camera"/></svg></button>
+          </div>
+          <div class="compass" id="compass" title="Orientación">
+            <div class="compass-ring"></div>
+            <span class="axis axis-x">X</span><span class="axis axis-y">Y</span><span class="axis axis-z">Z</span>
+            <div class="compass-needle" id="compass-needle"></div>
+          </div>
+          <div class="colorbar is-hidden" id="colorbar">
+            <div class="colorbar-title" id="colorbar-title">Presión</div>
+            <div class="colorbar-body">
+              <div class="colorbar-ramp" id="colorbar-ramp"></div>
+              <div class="colorbar-ticks" id="colorbar-ticks"></div>
+            </div>
+            <div class="colorbar-unit" id="colorbar-unit">Pa cinemática</div>
+          </div>
+          <div class="viewer-loader is-hidden" id="viewer-loader"><span class="spinner"></span><small id="viewer-loader-text">Leyendo resultados…</small></div>
+          <div class="viewer-empty is-hidden" id="viewer-empty">
+            <svg class="icon"><use href="#i-cube"/></svg>
+            <strong>Sin geometría todavía</strong>
+            <span>Crea un proyecto o carga un modelo STL para empezar.</span>
+            <button class="btn btn-primary" id="btn-empty-new">Crear proyecto</button>
+          </div>
+          <div class="viewport-foot">
+            <span id="viewer-mode">Previsualización de geometría</span>
+            <span class="viewport-legend"><i class="legend-domain"></i> Dominio <i class="legend-solid"></i> Sólido <i class="legend-result"></i> Resultado</span>
+          </div>
+        </div>
+
+        <section class="dock" id="dock">
+          <header class="dock-head">
+            <div class="dock-tabs" id="dock-tabs">
+              <button data-dock="console" class="active"><svg class="icon"><use href="#i-terminal"/></svg> Consola</button>
+              <button data-dock="residuals"><svg class="icon"><use href="#i-chart"/></svg> Residuales</button>
+            </div>
+            <div class="dock-status" id="dock-status">
+              <span class="status-dot idle"></span>
+              <span id="dock-status-text">Listo</span>
+              <span class="dock-progress"><i id="dock-progress-bar"></i></span>
+              <span id="dock-progress-text">0%</span>
+              <button class="dock-stop is-hidden" id="btn-stop"><svg class="icon"><use href="#i-stop"/></svg> Detener</button>
+              <button class="dock-collapse" id="btn-dock-toggle" title="Contraer consola"><svg class="icon"><use href="#i-chevron"/></svg></button>
+            </div>
+          </header>
+          <div class="dock-body">
+            <div class="dock-pane active" id="dock-console">
+              <div class="console" id="console"><div class="console-line muted">La consola mostrará el log del solver y de checkMesh.</div></div>
+            </div>
+            <div class="dock-pane" id="dock-residuals">
+              <div class="chart-wrap">
+                <canvas id="residual-chart"></canvas>
+                <div class="chart-legend" id="chart-legend"><span class="lg Ux">Ux</span><span class="lg Uy">Uy</span><span class="lg p">p</span><span class="lg cont">continuidad</span></div>
+                <div class="chart-empty" id="chart-empty">Ejecuta una simulación para ver la convergencia.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="inspector" id="inspector">
+        <div class="inspector-head">
+          <span class="inspector-kicker" id="inspector-kicker">PASO 1</span>
+          <h2 id="inspector-title">Geometría</h2>
+          <p id="inspector-sub">Define el dominio de cálculo y revisa los patches.</p>
+        </div>
+        <div class="inspector-body" id="inspector-body"></div>
+        <div class="inspector-foot" id="inspector-foot"></div>
+      </aside>
+    </main>
+
+    <footer class="statusbar">
+      <span class="status-item"><i class="status-dot ok"></i><span id="status-runtime">OpenFOAM</span></span>
+      <span class="status-item"><svg class="icon"><use href="#i-grid"/></svg><span id="status-cells">Sin malla</span></span>
+      <span class="status-item case-path" id="status-case">—</span>
+      <span class="spacer"></span>
+      <span class="status-item"><span id="status-message">Listo</span></span>
+      <span class="status-item version">FileGenFOAM Studio 0.1.0</span>
+    </footer>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/vendor/three.module.js",
+        "three/addons/": "/vendor/addons/"
+      }
+    }
+  </script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

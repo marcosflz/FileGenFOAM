@@ -1,0 +1,6 @@
+flask>=3.0,<4
+pywebview>=5.0,<7
+numpy>=1.26
+gmsh>=4.13
+pyvista>=0.44
+vtk>=9.3

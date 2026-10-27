@@ -2,3 +2,29 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# Local runtime data
+workspace/
+scripts/_out/
+*.log
+logs/
+
+# Generated OpenFOAM artifacts at the repository root (legacy FileGenFOAM tool)
+/0/
+/constant/polyMesh/
+/system/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+node_modules/
